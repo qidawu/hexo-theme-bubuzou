@@ -14,6 +14,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: covered_by_your_graceregular;
+    src: url(../font/coveredbyyourgrace-webfont.woff) format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
 html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
@@ -25,7 +32,7 @@ body { margin: 0; }
 .row {
     position: relative;
     width: 100%;
-    max-width: 980px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
@@ -296,6 +303,14 @@ header {
 }
 header .logo-link { float: left; }
 
+header .title-link {
+    font-size: 28px;
+    color: #fff;
+    font-family: "covered_by_your_graceregular","微软雅黑";
+    float: left;
+    padding: 9px 0 0 10px;
+}
+
 header .nav {
     float: right;
     left: 80px;
@@ -423,7 +438,7 @@ header .nav-list-item .active { opacity: 0.7; }
 .post-block .post-info span { margin-left: 0.5rem; }
 
 .post-block .post-info a {
-    margin-right: 0.5rem;
+    margin-left: 0.5rem;
     padding: 3px 6px;
     border-radius: 5px;
     font-size: 12px;
@@ -724,7 +739,7 @@ pre .xml .cdata { opacity: 0.5; }
 #disqus_thread { margin-bottom: 2em; }
 
 section.container {
-    max-width: 700px;
+    max-width: 900px;
     margin: 0 10px;
     padding-top: 70px;
 }
@@ -750,14 +765,14 @@ footer .copyright a { color: #aaa; }
 
 footer .copyright a:hover { color: #666; }
 
-.footer-con { width: 700px; }
+.footer-con { width: 900px; }
 
 .totop {
     position: fixed;
     z-index: 999;
     bottom: 145px;
     display: none;
-    margin-left: 740px;
+    margin-left: 950px;
     cursor: pointer;
 }
 
@@ -774,10 +789,10 @@ footer .copyright a:hover { color: #666; }
 .right-container {
     position: fixed;
     z-index: 10;
-    width: 230px;
+    width: 270px;
     top: 90px;
     left: 50%;
-    margin-left: 310px;
+    margin-left: 370px;
 }
 
 .tags {
@@ -991,6 +1006,8 @@ footer .copyright a:hover { color: #666; }
     height: 28px;
     line-height: 28px;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .category-list {
@@ -1016,7 +1033,7 @@ footer .copyright a:hover { color: #666; }
     left: 5px;
     top: -5px;
     width: 0;
-    max-height: 290px;
+    max-height: 630px;
     border: 1px solid #eaeaea;
     border-top: 0;
     border-bottom: 0;
@@ -1048,7 +1065,7 @@ footer .copyright a:hover { color: #666; }
 }
 
 .arCatalog .arCatalog-list {
-    max-height: 224px;
+    max-height: 630px;
     margin-left: -2px;
     padding-left: 27px;
     overflow-x: hidden;
@@ -1115,6 +1132,24 @@ footer .copyright a:hover { color: #666; }
 .arCatalog-list .arCatalog-tack2 .arCatalog-index {
     position: absolute;
     left: 27px;
+    top: 0;
+    color: #bbb;
+}
+
+.arCatalog-list .arCatalog-tack3 { padding-left: 30px; }
+
+.arCatalog-list .arCatalog-tack3 a {
+    display: block;
+    padding-left: 67px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.arCatalog-list .arCatalog-tack3 .arCatalog-index {
+    position: absolute;
+    left: 50px;
     top: 0;
     color: #bbb;
 }

@@ -20,17 +20,23 @@ var arAnchor = (function() {
         
         var h2Seq = 1,
             h3Seq = 1;
+            h4Seq = 1;
         $arContentAnchor.each(function(i){
             var $this = $(this),
                 acIndex = '',
                 $dd = $('<dd><span class="arCatalog-index"></span><a></a><span class="arCatalog-dot"></span></dd>'),
                 hTagName = $arContentAnchor[ i ].parentElement.tagName;
-            if( hTagName === 'H3' ){
+            if( hTagName === 'H2' ){
                  acIndex = '' + --h2Seq + '.' + h3Seq++ + '';
                 $dd.addClass( 'arCatalog-tack2' );
+            }
+            else if( hTagName === 'H3' ){
+                 acIndex = '' + --h2Seq + '.' + (h3Seq-1) + '.' + h4Seq++;
+                $dd.addClass( 'arCatalog-tack3' );
             }else {
                 acIndex = h2Seq;
                 h3Seq = 1;
+                h4Seq = 1;
                 $dd.addClass( 'arCatalog-tack1' );
             }
             h2Seq++;
@@ -41,10 +47,14 @@ var arAnchor = (function() {
             $dd.appendTo( $arCatalog.find('dl')[ 0 ] );
         });
 
-        var lineHeight = $arContentAnchor.length > 8 ? 234 : ( $arContentAnchor.length * 28 + 10 );
+        var lineHeight = $arContentAnchor.length * 28 + 10 ;
         $arCatalog.find('.arCatalog-line').css('height', lineHeight );
         $arCatalog.find('dd').eq(0).addClass('on');
         $arCatalog.appendTo($( '#arAnchorBar' )[ 0 ]);
+        if ($arContentAnchor.length > 0) {
+            var h4title = $("<h4>").text("本文目录");
+            h4title.insertBefore($( '#arAnchorBar' )[ 0 ]);
+        }
 
         var catalogLength = $arContentAnchor.length,
             $firstCatalog = $arCatalog.find('dd'),

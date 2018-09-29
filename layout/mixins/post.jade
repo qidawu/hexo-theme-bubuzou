@@ -1,16 +1,17 @@
 mixin postInfo(item)
     .post-info
         != date(item.date, 'YYYY-MM-DD')
-        p.visit
-            if (is_home())
-                i(data-hk-page='http://bubuzou.com'+url_for(item.path)) -
-            else 
-                i(data-hk-page="current") -
-            span 次访问
+        
+        if item.tags && item.tags.length
+          - item.tags.each(function (tag) {
+              a.post-demo(href=config.root+tag.path title=tag.name)!=tag.name
+          - })
+        
         if item.from && (is_home() || is_post())
             a.post-from(href=item.from target="_blank" title=item.from) 原文地址
         if item.demo && ( is_home() || is_post() )
             a.post-demo(href=item.demo target="_blank" title="") 去看示例
+
 // for archive page
 mixin postInfoAr(item)
     .post-info
@@ -19,6 +20,7 @@ mixin postInfoAr(item)
             a.post-from(href=item.from target="_blank" title=item.from) 原文地址
         if item.demo && ( is_home() || is_post() )
             a.post-demo(href=item.demo target="_blank" title="") 去看示例
+
 //- Index Page
 mixin posts()
     ul.home.post-list
@@ -30,8 +32,7 @@ mixin posts()
                             != item.title
                     +postInfo(item)
                     .post-content
-                        != item.excerpt
-                    a.read-more(href= url_for(item.path))!= __('more')
+                        != item.content
         - })
 
 //- Archive Page
